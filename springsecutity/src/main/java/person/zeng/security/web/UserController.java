@@ -32,7 +32,7 @@ public class UserController {
   public String successLogin(HttpServletRequest requet,HttpServletResponse respose) {
    Authentication auth =  SecurityContextHolder.getContext().getAuthentication();
    List<GrantedAuthority> roles =new ArrayList<GrantedAuthority>(auth.getAuthorities());
-   return "user:"+auth.getName()+" role:"+roles.toString();
+   return "user:"+auth.getName()+" role:"+roles.toString()+"sessionID="+requet.getSession().getId();
   }
   
   @GetMapping("/failureLogin")
@@ -41,4 +41,5 @@ public class UserController {
    Authentication auth =  SecurityContextHolder.getContext().getAuthentication();
    return auth.getName();
   }
+  
 }

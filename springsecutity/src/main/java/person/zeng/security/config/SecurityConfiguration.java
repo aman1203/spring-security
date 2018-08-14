@@ -36,13 +36,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .and()
         .formLogin()//有一个默认的登录页面/login
         .loginProcessingUrl("/login")//登录处理，主要是验证处理账号密码
-        .successForwardUrl("/successLogin")
+        .successForwardUrl("/successLogin").failureUrl("/failureLogin")
         .permitAll()
         .and()
         .rememberMe()
         .and()
-        .logout()
-        .permitAll();
+        .logout().logoutUrl("/zengjie").logoutSuccessUrl("/admin1");
+        //.permitAll();
+    http.csrf().disable();
   }
 
   /**
